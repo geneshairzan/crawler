@@ -11,9 +11,9 @@ export default function App({ children, router }) {
   const isLogin = router.route.includes("/login");
   const { auth } = useAuth();
 
-  React.useEffect(() => {
-    if (!isLogin && !auth) Router.push("/login");
-  });
+  // React.useEffect(() => {
+  //   if (!isLogin && !auth) Router.push("/login");
+  // });
 
   if (!isLogin && !auth) return "";
   return (
