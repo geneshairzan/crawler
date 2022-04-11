@@ -15,7 +15,7 @@ export default function App({ children, router }) {
   //   if (!isLogin && !auth) Router.push("/login");
   // });
 
-  if (!isLogin && !auth) return "";
+  // if (!isLogin && !auth) return "";
   return (
     <ThemeProvider>
       <Layout>
