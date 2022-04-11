@@ -39,7 +39,7 @@ export function dataparsing(body, config) {
 export async function getHTML(config) {
   console.log(`Start Crawling ${config.url}`);
   const browser = await puppeteer.launch({
-    executablePath: "/usr/bin/firefox",
+    // executablePath: "/usr/bin/firefox",
     headless: true,
   });
   const page = await browser.newPage();
