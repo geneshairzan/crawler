@@ -90,13 +90,13 @@ async function autoScroll(page) {
 
           setTimeout(() => {
             window.scrollTo(0, 0);
-          }, 1000);
+          }, 5000);
 
           if (cscroll >= 5) {
             clearInterval(timer);
             resolve();
           }
-        }, 1000);
+        }, 3000);
       });
     }
     await scrollChild(cfg);
