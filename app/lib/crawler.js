@@ -41,8 +41,8 @@ export async function getHTML(config) {
   const browser = await puppeteer.launch({
     args: [
       "--no-sandbox",
-      "--disable-setuid-sandbox",
-      "--use-gl=egl",
+      // "--disable-setuid-sandbox",
+      // "--use-gl=egl",
       "--disable-gpu",
     ],
     headless: true,
