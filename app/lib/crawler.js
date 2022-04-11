@@ -41,11 +41,19 @@ export async function getHTML(config) {
   const browser = await puppeteer.launch({
     headless: true,
   });
+  console.log(`browser set`);
+
   const page = await browser.newPage();
+  console.log(`browser new page`);
+
   await page.setViewport({ width: 1280, height: 800 });
+  console.log(`browser set view port`);
+
   await page.setUserAgent(
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
   );
+  console.log(`browser set agent`);
+
   console.log("waiting page loaded");
   await page.goto(config.url, { waitUntil: "networkidle2" });
 
