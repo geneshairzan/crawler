@@ -39,6 +39,7 @@ export function dataparsing(body, config) {
 export async function getHTML(config) {
   console.log(`Start Crawling ${config.url}`);
   const browser = await puppeteer.launch({
+    args: ["--disable-gpu"],
     headless: true,
   });
   console.log(`browser set`);
