@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Crawler {
+  id         String    @id @default(cuid())
+  name       String?
+  url        String?
+  headless   Boolean?
+  root       String?
+  deleted_at DateTime?
+
+  child String?
+
+  result CrawlerResult[]
+}
+
+model CrawlerResult {
+  id         String    @id @default(cuid())
+  result     String?
+  Crawler    Crawler?  @relation(fields: [crawlerId], references: [id])
+  crawlerId  String?
+  deleted_at DateTime?
+
+}

@@ -1,0 +1,33 @@
+@import "./default.css";
+
+:root {
+  /* --ww: #f8f3ea;
+  --fgrey: rgba(16, 15, 15, 0.377108);
+  --fgrey2: #7e90b2;
+  --fred: #ff7e7e;
+  --fgreen: #42df94;
+  --primary: #2e4c83;
+  --bgdark: rgba(20, 7, 53, 0.4);
+  --fdark: #21176e; */
+}
+
+body {
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+/* test */
+.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.f-white {
+  color: white;
+  fill: white;
+}
+
+.elevate {
+  box-shadow: 0 2px 2px -1px rgb(0 0 0 / 20%), 0 4px 5px 0 rgb(0 0 0 / 14%),
+    0 1px 10px 0 rgb(0 0 0 / 12%);
+}

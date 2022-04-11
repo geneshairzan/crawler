@@ -1,7 +1,17 @@
-import '../styles/globals.css'
+import "styles/app.css";
+import ContextProvider from "component/provider/contextProvider";
+import UiProvider from "component/provider/uiProvider";
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+//https://nextjs.org/docs/api-reference/next.config.js/introduction
+
+function MyApp({ Component, pageProps, router }) {
+  return (
+    <ContextProvider>
+      <UiProvider router={router}>
+        <Component {...pageProps} />
+      </UiProvider>
+    </ContextProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
