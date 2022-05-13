@@ -77,19 +77,3 @@ export default function App({ refdata }) {
     </Stack>
   );
 }
-
-const rootele = {
-  element: ".media__title",
-  child: [
-    {
-      dataname: "title",
-      element: "a",
-      type: "text",
-    },
-    {
-      dataname: "linkpath",
-      element: "a",
-      type: "href",
-    },
-  ],
-};
