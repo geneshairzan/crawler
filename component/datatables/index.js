@@ -49,7 +49,9 @@ export default function App({ data, col, model, isRefetch }) {
       </Typography>
       <RenderCol col={col} order={order} onOrderChange={handleOrderChange} />
       <RenderData
-        data={data}
+        data={data.sort(
+          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+        )}
         col={col}
         sf={sf}
         order={order}
@@ -58,6 +60,19 @@ export default function App({ data, col, model, isRefetch }) {
       />
     </Stack>
   );
+}
+
+function handleSort(a, b) {
+  let cpx = new Date(a.createdAt);
+  let cpy = new Date(b.createdAt);
+
+  if (cpx < cpy) {
+    return 1;
+  }
+  if (cpx > cpy) {
+    return -1;
+  }
+  return 0;
 }
 
 function RenderData({ data, col, sf, order, model, isRefetch }) {
@@ -91,6 +106,8 @@ function RenderData({ data, col, sf, order, model, isRefetch }) {
   return data
     .filter(resFilter)
     .sort(forder)
+    .sort(handleSort)
+
     .map((d, i) => (
       <Stack key={i} py={0.2}>
         <Stack direction={"row"} spacing={2}>

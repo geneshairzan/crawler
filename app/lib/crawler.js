@@ -5,12 +5,17 @@ export function dataparsing(body, config) {
   console.log("data parsing evaluate");
   const $ = cheerio.load(body);
   let content = [];
-  console.log(config.child);
+  console.log("parsing " + $(config.root).length + " data");
 
   $(config.root).map(function (ix) {
     var temp = {};
+
     config.child.map((dx) => {
       if (dx.type == "html") {
+        temp[dx.dataname] = $(this).find(dx.element).html();
+      }
+
+      if (dx.type == "html-filtered") {
         temp[dx.dataname] = $(this)
           .find(dx.element)
           .html()
@@ -23,6 +28,13 @@ export function dataparsing(body, config) {
       }
       if (dx.type == "src") {
         temp[dx.dataname] = $(this).find(dx.element).attr("src");
+      }
+      if (dx.type == "table-HTML") {
+        temp[dx.dataname] = $(this).innerHTML;
+        console.log($(this).innerHTML);
+      }
+      if (dx.type == "table-HREF") {
+        temp[dx.dataname] = $(this).html();
       }
     });
     content.push({ result: JSON.stringify(temp) });

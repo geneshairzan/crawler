@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography } from "@mui/material";
+import { Stack, Typography, Button } from "@mui/material";
 import useForm, { Input } from "component/formHelper/useForm";
 import BackIcon from "component/ui/backIcon";
 import { meta } from "./@meta";
@@ -66,30 +66,13 @@ export default function App({ refdata }) {
       <Typography variant="body1" color="primary" mb={2}>
         Child Element
       </Typography>
-      <InputCrawlerChild v={form.handleInput} refdata={refdata} fname="child" />
+      <InputCrawlerChild
+        v={form.handleInput}
+        refdata={refdata}
+        fname="child"
+        refRoot={form.payload.root}
+      />
 
-      <Stack my={2}>
-        <Typography variant="body1" color="primary" mb={2}>
-          Expected Tree
-        </Typography>
-        <Typography variant="body1" color="initial">
-          {form.payload.root} :
-        </Typography>
-        {form.payload.child &&
-          form.payload.child.map((d, ix) => (
-            <Stack direction={"row"} key={ix}>
-              <Typography variant="body1" color="initial" pl={3} width={120}>
-                {d.dataname}
-              </Typography>
-              <Typography variant="body1" color="initial" pl={3} width={20}>
-                {d.element}
-              </Typography>
-              <Typography variant="body1" color="initial" pl={3}>
-                {d.type}
-              </Typography>
-            </Stack>
-          ))}
-      </Stack>
       <Input.Submit />
     </Stack>
   );

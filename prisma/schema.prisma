@@ -11,12 +11,15 @@ datasource db {
 }
 
 model Crawler {
-  id         String    @id @default(cuid())
-  name       String?
-  url        String?
-  headless   Boolean?
-  root       String?
+  id       String   @id @default(cuid())
+  name     String?
+  url      String?
+  headless Boolean?
+  root     String?
+  header   String?
+
   deleted_at DateTime?
+  createdAt  DateTime  @default(now()) @map("created_at")
 
   child String?
 

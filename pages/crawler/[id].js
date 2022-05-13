@@ -25,26 +25,40 @@ export default function App(props) {
     );
   }
   if (!data) return "";
-  console.log(data);
   const header = data.result.length
-    ? Object.entries(JSON.parse(data.result[0].result)).map(
-        ([key, value]) => key
-      )
+    ? Object.entries(JSON.parse(data.child))[0][1].map((d) => d.dataname)
     : null;
 
   return (
     <Stack>
       <BackIcon title={"Details"} />
-
       {!header && "data error"}
       {header && <Header header={header} data={data} />}
-      <Stack>
+
+      {console.log(data)}
+      <Stack spacing={1} overflow={"scroll"} height="calc(100vh - 500px)">
         {data.result &&
           data.result.map((d) => (
-            <Stack key={d.id} direction="row">
+            <Stack key={d.id}>
               {header.map((h, ix) => (
-                <Stack key={ix} width="20%">
-                  {JSON.parse(d.result)[h]}
+                <Stack
+                  key={ix}
+                  direction="row"
+                  spacing={2}
+                  overflow="hidden"
+                  width={"100%"}
+                  height={24}
+                >
+                  <Typography
+                    variant="body1"
+                    color="initial"
+                    fontWeight={"bold"}
+                  >
+                    {h}
+                  </Typography>
+                  <Typography variant="body1" color="initial">
+                    {JSON.parse(d.result)[h] || "nodata"}
+                  </Typography>
                 </Stack>
               ))}
             </Stack>
@@ -83,7 +97,7 @@ function Header({ data, header }) {
             <Typography variant="body1" color="initial" pl={3} width={120}>
               {d.dataname}
             </Typography>
-            <Typography variant="body1" color="initial" pl={3} width={20}>
+            <Typography variant="body1" color="initial" pl={3} width={120}>
               {d.element}
             </Typography>
             <Typography variant="body1" color="initial" pl={3}>

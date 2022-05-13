@@ -39,12 +39,12 @@ export default base()
   })
   .post(async (req, res) => {
     try {
-      //   req.body.child = JSON.stringify(req.body.child);
       let rawHTML = await getHTML(req.body);
       req.body.result = await dataparsing(rawHTML, req.body);
 
       let parse = objectparse(req.body);
       parse.child = JSON.stringify(parse.child);
+      parse.header = JSON.stringify(parse.child);
 
       const result = await prisma[model].upsert({
         where: { id: req.body.id ? req.body.id : "noid" },

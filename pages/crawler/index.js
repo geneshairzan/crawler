@@ -18,7 +18,6 @@ export default function AdminPage(params) {
       })
     );
   }
-  console.log(data);
   return (
     <Datatable
       data={data}
