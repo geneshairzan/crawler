@@ -31,5 +31,5 @@ yarn-error.log*
 # vercel
 .vercel
 
-test.png
-prisma/dev.db
+/test.png
+/prisma/dev.db
